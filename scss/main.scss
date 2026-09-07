@@ -20,6 +20,7 @@ footer.footer {
 p {
   font-family: $font-family-serif;
   font-size: 18px;
+  font-weight: 500;
 }
 
 .hero-scene {
@@ -40,7 +41,9 @@ p {
     position: relative;
   }
 }
-
+.btn-main {
+  text-align: center;
+}
 .hero-scene-content {
   height: 300px;
   display: flex;

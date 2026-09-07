@@ -11999,6 +11999,7 @@ footer.footer {
 p {
   font-family: "Hind Madurai", serif;
   font-size: 18px;
+  font-weight: 500;
 }
 
 .hero-scene {
@@ -12017,6 +12018,10 @@ p {
 }
 .hero-scene * {
   position: relative;
+}
+
+.btn-main {
+  text-align: center;
 }
 
 .hero-scene-content {
