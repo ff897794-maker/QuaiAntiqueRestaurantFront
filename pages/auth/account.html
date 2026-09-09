@@ -13,6 +13,7 @@
         id="NomInput"
         placeholder="Votre nom"
         name="Nom"
+        value="John"
       />
     </div>
     <div class="mb-3">
@@ -23,6 +24,7 @@
         id="PrenomInput"
         placeholder="Votre prénom"
         name="Prenom"
+        value="Doe"
       />
     </div>
     <div class="mb-3">
@@ -33,6 +35,7 @@
         id="allergieInput"
         placeholder="Vos allergies (fruits de mer,arachides, gluten, etc.)"
         name="Allergies"
+        value="Arachides"
       />
     </div>
     <div class="mb-3">
@@ -45,11 +48,15 @@
         id="nbConvivesInput"
         placeholder="Combien de convives viennent habituellement avec vous ?"
         name="NbConvives"
+        value="2"
       />
     </div>
     <div class="text-center">
       <button type="submit" class="btn btn-primary">
         Modifier vos informations
+      </button>
+      <button type="button" class="btn btn-danger" id="deleteAccountButton">
+        Supprimer votre compte
       </button>
     </div>
   </form>
