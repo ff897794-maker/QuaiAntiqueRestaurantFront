@@ -12078,4 +12078,17 @@ p {
 
 .form-label {
   color: #906427;
+}
+
+.allReservations a {
+  display: block;
+  color: black;
+  padding: 10px;
+  border-bottom: 1px solid #906427;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+.allReservations a:hover {
+  background-color: #b6ac97;
+  color: white;
 }/*# sourceMappingURL=main.css.map */
