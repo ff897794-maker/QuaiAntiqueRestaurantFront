@@ -29,6 +29,12 @@ export const allRoutes = [
     ["client", "admin"],
   ),
   new Route(
+    "/adminResa",
+    "Réservations",
+    "/pages/reservations/adminResa.html",
+    ["admin"],
+  ),
+  new Route(
     "/reservations",
     "Vos réservations",
     "/pages/reservations/allResa.html",

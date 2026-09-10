@@ -1,0 +1,54 @@
+<div class="hero-scene text-center text-white">
+  <div class="hero-scene-content">
+    <h1>Les réservations</h1>
+  </div>
+</div>
+<div class="container text-center p-4 allReservations">
+  <a href="#" data-bs-toggle="modal" data-bs-target="#deleteReservationModal">
+    <span>12/05/2023</span> | <span>Midi</span> | <span>12:00</span> |
+    <span>5 Personne(s)</span> | <span>Pas d'allergies</span>
+  </a>
+  <a href="#" data-bs-toggle="modal" data-bs-target="#deleteReservationModal">
+    <span>12/05/2023</span> | <span>Midi</span> | <span>12:00</span> |
+    <span>5 Personne(s)</span> | <span>Pas d'allergies</span>
+  </a>
+  <a href="#" data-bs-toggle="modal" data-bs-target="#deleteReservationModal">
+    <span>12/05/2023</span> | <span>Soir</span> | <span>19:30</span> |
+    <span>2 Personne(s)</span> | Allergie(s):<span>Arachides</span>
+  </a>
+</div>
+
+<!-- Modal d'edition -->
+<div
+  class="modal fade"
+  id="deleteReservationModal"
+  tabindex="-1"
+  aria-labelledby="deleteReservationModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editionReservationModalLabel">
+          Edition de la réservation
+        </h5>
+
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>Modifier ou annuler cette réservation ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Modifier
+        </button>
+        <button type="button" class="btn btn-danger">Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>

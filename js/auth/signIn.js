@@ -18,7 +18,7 @@ function checkCredentials() {
 
     // Placer le token en cookie
     setToken(token);
-    setCookie(roleCookieName, "client", 7);
+    setCookie(roleCookieName, "admin", 7);
     // Redirection vers la page d'accueil
     window.location.href = "/";
   } else {
