@@ -44,14 +44,36 @@ const LoadContentPage = async () => {
   const allRolesArray = actualRoute.authorize;
 
   if (allRolesArray.length > 0) {
+    // Cas spécial : page réservée aux non connectés
     if (allRolesArray.includes("disconnected")) {
       if (isConnected()) {
         window.location.replace("/");
+        return;
       }
-    } else {
+    }
+
+    // Cas général : page réservée à certains rôles
+    else {
       const roleUser = getRole();
-      if (!allRolesArray.includes(roleUser)) {
+
+      // 1) Si l'utilisateur n'est pas connecté → redirection vers signIn
+      if (!isConnected()) {
+        localStorage.setItem(
+          "redirectMessage",
+          "Veuillez vous connecter pour accéder à cette page.",
+        );
         window.location.replace("/signIn");
+        return;
+      }
+
+      // 2) Si l'utilisateur est connecté mais n'a pas le bon rôle
+      if (!allRolesArray.includes(roleUser)) {
+        localStorage.setItem(
+          "redirectMessage",
+          `Vous n'avez pas l'accès à cette page. "${roleUser}" n'est pas autorisé.`,
+        );
+        window.location.replace("/");
+        return;
       }
     }
   }
@@ -60,6 +82,11 @@ const LoadContentPage = async () => {
   const html = await fetch(actualRoute.pathHtml).then((data) => data.text());
   // Ajout du contenu HTML à l'élément avec l'ID "main-page"
   document.getElementById("main-page").innerHTML = html;
+  const msg = localStorage.getItem("redirectMessage");
+  if (msg) {
+    showRedirectBanner(msg);
+    localStorage.removeItem("redirectMessage");
+  }
 
   // Ajout du contenu JavaScript
   if (actualRoute.pathJS != "") {
@@ -95,3 +122,16 @@ window.onpopstate = LoadContentPage;
 window.route = routeEvent;
 // Chargement du contenu de la page au chargement initial
 LoadContentPage();
+
+function showRedirectBanner(message) {
+  const banner = document.createElement("div");
+  banner.className = "redirect-banner";
+  banner.textContent = message;
+
+  document.body.prepend(banner);
+
+  setTimeout(() => {
+    banner.classList.add("hide");
+    setTimeout(() => banner.remove(), 500);
+  }, 4000);
+}

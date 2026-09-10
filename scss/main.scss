@@ -148,3 +148,22 @@ p {
     transform: rotate(360deg);
   }
 }
+.redirect-banner {
+  background: $primary;
+  color: white;
+  padding: 12px 20px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1rem;
+  border: 2px solid $secondary;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99999;
+  transition: opacity 0.5s ease;
+}
+
+.redirect-banner.hide {
+  opacity: 0;
+}

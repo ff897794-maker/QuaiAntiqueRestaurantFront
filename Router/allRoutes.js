@@ -42,7 +42,6 @@ export const allRoutes = [
   ),
   new Route("/reserver", "Réserver", "/pages/reservations/reserver.html", [
     "client",
-    "admin",
   ]),
   new Route("/carte", "La carte", "/pages/gestion/carte.html", []),
 ];
