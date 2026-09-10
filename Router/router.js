@@ -70,7 +70,7 @@ const LoadContentPage = async () => {
       if (!allRolesArray.includes(roleUser)) {
         localStorage.setItem(
           "redirectMessage",
-          "Vous n'avez pas les droits pour accéder à cette page.",
+          `Vous n'avez pas l'accès à cette page. "${roleUser}" n'est pas autorisé.`,
         );
         window.location.replace("/");
         return;

@@ -149,13 +149,13 @@ p {
   }
 }
 .redirect-banner {
-  background: #ffdd57;
-  color: #333;
+  background: $primary;
+  color: white;
   padding: 12px 20px;
   text-align: center;
   font-weight: 600;
   font-size: 1rem;
-  border-bottom: 2px solid #e0c74f;
+  border: 2px solid $secondary;
   position: fixed;
   top: 0;
   left: 0;
