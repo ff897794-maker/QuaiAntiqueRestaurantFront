@@ -1,6 +1,17 @@
 import Route from "./Route.js";
 import { allRoutes, websiteName } from "./allRoutes.js";
 
+// Loader functions
+const showLoader = () => {
+  const loader = document.getElementById("loader");
+  loader.classList.remove("hidden");
+};
+
+const hideLoader = () => {
+  const loader = document.getElementById("loader");
+  loader.classList.add("hidden");
+};
+
 // Création d'une route pour la page 404 (page introuvable)
 const route404 = new Route("404", "Page introuvable", "/pages/404.html", []);
 
@@ -23,6 +34,8 @@ const getRouteByUrl = (url) => {
 
 // Fonction pour charger le contenu de la page
 const LoadContentPage = async () => {
+  //ajout d'un loader pour le temps de chargement de la page
+  showLoader();
   const path = window.location.pathname;
   // Récupération de l'URL actuelle
   const actualRoute = getRouteByUrl(path);
@@ -64,8 +77,8 @@ const LoadContentPage = async () => {
 
   // Afficher et masquer les elements en fonction du rôle
   showAndHideElementsForRoles();
+  hideLoader();
 };
-
 // Fonction pour gérer les événements de routage (clic sur les liens)
 const routeEvent = (event) => {
   event = event || window.event;
