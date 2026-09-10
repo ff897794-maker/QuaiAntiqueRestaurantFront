@@ -4,7 +4,12 @@ import Route from "./Route.js";
 export const allRoutes = [
   new Route("/", "Accueil", "/pages/home.html"),
   new Route("/galerie", "Galerie", "/pages/gestion/galerie.html"),
-  new Route("/signIn", "Connexion", "/pages/auth/signIn.html"),
+  new Route(
+    "/signIn",
+    "Connexion",
+    "/pages/auth/signIn.html",
+    "/js/auth/signIn.js",
+  ),
   new Route(
     "/signUp",
     "Inscription",
