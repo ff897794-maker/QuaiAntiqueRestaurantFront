@@ -103,9 +103,51 @@
     </div>
     <div class="text-center">
       <button type="submit" class="btn btn-primary">Réserver</button>
-      <button type="button" class="btn btn-danger" id="deleteAccountButton">
+      <button
+        type="button"
+        class="btn btn-danger"
+        id="deleteAccountButton"
+        data-bs-toggle="modal"
+        data-bs-target="#cancelModal"
+      >
         Annuler
       </button>
     </div>
   </form>
+</div>
+<!-- Modal d'annulation -->
+<div
+  class="modal fade"
+  id="cancelModal"
+  tabindex="-1"
+  aria-labelledby="cancelModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cancelModalLabel">
+          Êtes-vous sûr de vouloir annuler cette réservation ?
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <a href="#">
+          <span>12/05/2023</span> | <span>Soir</span> |<span>19:30</span> |
+          <span>2 </span>Personne(s) | Allergie(s): <span>Arachides</span>
+        </a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Annuler
+        </button>
+        <button type="button" class="btn btn-danger">Confirmer</button>
+      </div>
+    </div>
+  </div>
 </div>
