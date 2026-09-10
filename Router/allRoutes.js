@@ -43,7 +43,13 @@ export const allRoutes = [
   new Route("/reserver", "Réserver", "/pages/reservations/reserver.html", [
     "client",
   ]),
-  new Route("/carte", "La carte", "/pages/gestion/carte.html", []),
+  new Route(
+    "/carte",
+    "La carte",
+    "/pages/gestion/carte.html",
+    [],
+    "/js/gestion/carte.js",
+  ),
 ];
 
 //Le titre s'affiche comme ceci : Route.titre - websitename
