@@ -14,6 +14,7 @@
         placeholder="Votre nom"
         name="Nom"
       />
+      <div class="invalid-feedback">Le nom est requis.</div>
     </div>
     <div class="mb-3">
       <label for="PrenomInput" class="form-label">Prénom</label>
@@ -24,6 +25,7 @@
         placeholder="Votre prénom"
         name="Prenom"
       />
+      <div class="invalid-feedback">Le prénom est requis.</div>
     </div>
     <div class="mb-3">
       <label for="EmailInput" class="form-label">Email</label>
@@ -34,6 +36,7 @@
         placeholder="test@mail.fr"
         name="Email"
       />
+      <div class="invalid-feedback">Veuillez entrer un email valide.</div>
     </div>
     <div class="mb-3">
       <label for="PasswordInput" class="form-label">Mot de passe</label>
@@ -43,20 +46,33 @@
         id="PasswordInput"
         name="Password"
       />
+      <div class="invalid-feedback">
+        Le mot de passe n'est pas assez robuste : il doit contenir au moins 8
+        caractères, dont une majuscule, une minuscule, un chiffre et un
+        caractère spécial.
+      </div>
+      <div class="valid-feedback">Le mot de passe est robuste.</div>
     </div>
+
     <div class="mb-3">
-      <label for="ValidatePasswordInput" class="form-label"
-        >Validez votre mot de passe</label
-      >
+      <label for="ValidatePasswordInput" class="form-label">
+        Validez votre mot de passe
+      </label>
       <input
         type="password"
         class="form-control"
         id="ValidatePasswordInput"
         name="PasswordConfirm"
       />
+      <div class="valid-feedback">Les mots de passe correspondent.</div>
+      <div class="invalid-feedback">
+        Les mots de passe ne correspondent pas.
+      </div>
     </div>
     <div class="text-center">
-      <button type="submit" class="btn btn-primary">Inscription</button>
+      <button type="submit" class="btn btn-primary" id="signUpButton">
+        Inscription
+      </button>
     </div>
   </form>
   <div class="text-center pt-3">
