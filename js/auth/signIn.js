@@ -48,12 +48,4 @@ function checkCredentials() {
         "Une erreur est survenue lors de la connexion. Veuillez réessayer.",
       );
     });
-
-  // Récupération des valeurs des champs de saisie
-  const email = mailInput.value;
-  const password = passwordInput.value;
-
-  if (email === "test@mail.com" && password === "password123") {
-  } else {
-  }
 }
