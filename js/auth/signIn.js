@@ -7,6 +7,8 @@ signInButton.addEventListener("click", checkCredentials);
 
 function checkCredentials() {
   let dataForm = new FormData(signInForm);
+<<<<<<< HEAD
+=======
 
   let myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
@@ -48,4 +50,52 @@ function checkCredentials() {
         "Une erreur est survenue lors de la connexion. Veuillez réessayer.",
       );
     });
+>>>>>>> 82b5a164d74089aa5c01d63a7c7aa71b46ef0c0c
+
+  let myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+<<<<<<< HEAD
+  let raw = JSON.stringify({
+    username: dataForm.get("email"),
+    password: dataForm.get("password"),
+  });
+
+  const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow",
+  };
+
+  fetch(apiUrl + "login", requestOptions)
+    .then((response) => {
+      if (!response.ok) {
+        mailInput.classList.add("is-invalid");
+        passwordInput.classList.add("is-invalid");
+      }
+      return response.json();
+    })
+    .then((result) => {
+      alert("Connexion réussie !");
+
+      const token = result.apiToken;
+
+      // Placer le token en cookie
+      setToken(token);
+      setCookie(roleCookieName, result.roles[0], 7);
+      // Redirection vers la page d'accueil
+      window.location.href = "/";
+    })
+    .catch((error) => {
+      console.error(error);
+      alert(
+        "Une erreur est survenue lors de la connexion. Veuillez réessayer.",
+      );
+    });
+=======
+  if (email === "test@mail.com" && password === "password123") {
+  } else {
+  }
+>>>>>>> 82b5a164d74089aa5c01d63a7c7aa71b46ef0c0c
 }
