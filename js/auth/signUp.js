@@ -4,6 +4,7 @@ const inputEmail = document.getElementById("EmailInput");
 const inputPassword = document.getElementById("PasswordInput");
 const inputConfirmPassword = document.getElementById("ValidatePasswordInput");
 const signUpButton = document.getElementById("signUpButton");
+const signForm = document.getElementById("signForm");
 
 function ValidateForm() {
   const nomOk = validateRequired(inputNom);
@@ -70,6 +71,47 @@ function validateConfirmPassword(input) {
   }
 }
 
+function UserSignUp() {
+  let dataForm = new FormData(signForm);
+
+  let myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  let raw = JSON.stringify({
+    firstName: dataForm.get("name"),
+    lastName: dataForm.get("firstName"),
+    email: dataForm.get("email"),
+    password: dataForm.get("password"),
+  });
+
+  const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow",
+  };
+
+  fetch("http://127.0.0.1:8000/api/registration", requestOptions)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error();
+      }
+      return response.json();
+    })
+    .then((result) => {
+      alert(
+        "Inscription réussie ! Vous allez être redirigé vers la page de connexion.",
+      );
+      document.location.href = "/signIn";
+    })
+    .catch((error) => {
+      console.error(error);
+      alert(
+        "Une erreur est survenue lors de l'inscription. Veuillez réessayer.",
+      );
+    });
+}
+
 inputNom.addEventListener("input", () => ValidateForm());
 
 inputPrenom.addEventListener("input", () => ValidateForm());
@@ -79,3 +121,8 @@ inputEmail.addEventListener("input", () => ValidateForm());
 inputPassword.addEventListener("input", () => ValidateForm());
 
 inputConfirmPassword.addEventListener("input", () => ValidateForm());
+
+signUpButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  UserSignUp();
+});

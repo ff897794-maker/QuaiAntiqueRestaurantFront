@@ -4,7 +4,7 @@
   </div>
 </div>
 <div class="container">
-  <form>
+  <form id="signForm">
     <div class="mb-3">
       <label for="NomInput" class="form-label">Nom</label>
       <input
@@ -12,7 +12,7 @@
         class="form-control"
         id="NomInput"
         placeholder="Votre nom"
-        name="Nom"
+        name="name"
       />
       <div class="invalid-feedback">Le nom est requis.</div>
     </div>
@@ -23,7 +23,7 @@
         class="form-control"
         id="PrenomInput"
         placeholder="Votre prénom"
-        name="Prenom"
+        name="firstName"
       />
       <div class="invalid-feedback">Le prénom est requis.</div>
     </div>
@@ -34,7 +34,7 @@
         class="form-control"
         id="EmailInput"
         placeholder="test@mail.fr"
-        name="Email"
+        name="email"
       />
       <div class="invalid-feedback">Veuillez entrer un email valide.</div>
     </div>
@@ -44,7 +44,7 @@
         type="password"
         class="form-control"
         id="PasswordInput"
-        name="Password"
+        name="password"
       />
       <div class="invalid-feedback">
         Le mot de passe n'est pas assez robuste : il doit contenir au moins 8
@@ -62,7 +62,7 @@
         type="password"
         class="form-control"
         id="ValidatePasswordInput"
-        name="PasswordConfirm"
+        name="passwordConfirm"
       />
       <div class="valid-feedback">Les mots de passe correspondent.</div>
       <div class="invalid-feedback">
@@ -70,7 +70,7 @@
       </div>
     </div>
     <div class="text-center">
-      <button type="submit" class="btn btn-primary" id="signUpButton">
+      <button type="button" class="btn btn-primary" id="signUpButton">
         Inscription
       </button>
     </div>
