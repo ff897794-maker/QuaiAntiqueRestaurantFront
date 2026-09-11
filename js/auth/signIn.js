@@ -1,28 +1,59 @@
 const mailInput = document.getElementById("EmailInput");
 const passwordInput = document.getElementById("PasswordInput");
 const signInButton = document.getElementById("btn-signIn");
+const signInForm = document.getElementById("signInForm");
 
 signInButton.addEventListener("click", checkCredentials);
 
 function checkCredentials() {
-  // Ici appel à l'API pour vérifier les identifiants ( si bdd ready)
+  let dataForm = new FormData(signInForm);
+
+  let myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  let raw = JSON.stringify({
+    username: dataForm.get("email"),
+    password: dataForm.get("password"),
+  });
+
+  const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow",
+  };
+
+  fetch(apiUrl + "login", requestOptions)
+    .then((response) => {
+      if (!response.ok) {
+        mailInput.classList.add("is-invalid");
+        passwordInput.classList.add("is-invalid");
+      }
+      return response.json();
+    })
+    .then((result) => {
+      alert("Connexion réussie !");
+
+      const token = result.apiToken;
+
+      // Placer le token en cookie
+      setToken(token);
+      setCookie(roleCookieName, result.roles[0], 7);
+      // Redirection vers la page d'accueil
+      window.location.href = "/";
+    })
+    .catch((error) => {
+      console.error(error);
+      alert(
+        "Une erreur est survenue lors de la connexion. Veuillez réessayer.",
+      );
+    });
 
   // Récupération des valeurs des champs de saisie
   const email = mailInput.value;
   const password = passwordInput.value;
 
   if (email === "test@mail.com" && password === "password123") {
-    alert("Connexion réussie !");
-
-    const token = "votre_token_d_authentification"; // Remplacez par le token réel obtenu après la connexion
-
-    // Placer le token en cookie
-    setToken(token);
-    setCookie(roleCookieName, "client", 7);
-    // Redirection vers la page d'accueil
-    window.location.href = "/";
   } else {
-    mailInput.classList.add("is-invalid");
-    passwordInput.classList.add("is-invalid");
   }
 }
