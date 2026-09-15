@@ -88,3 +88,28 @@ function sanitizeHtml(text) {
   temp.textContent = text;
   return temp.innerHTML;
 }
+
+function getInfoUser() {
+  let myHeaders = new Headers();
+  myHeaders.append("X-AUTH-TOKEN", getToken());
+  const requestOptions = {
+    method: "GET",
+    headers: myHeaders,
+    redirect: "follow",
+  };
+
+  fetch(apiUrl + "account/me", requestOptions)
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        console.log(
+          "Impossible de recuperer les informations de l'utilisateur",
+        );
+      }
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch(() => console.error("Erreur lors de la recuperation"));
+}
