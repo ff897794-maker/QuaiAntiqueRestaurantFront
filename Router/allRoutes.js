@@ -3,7 +3,13 @@ import Route from "./Route.js";
 //Définir ici vos routes
 export const allRoutes = [
   new Route("/", "Accueil", "/pages/home.html", []),
-  new Route("/galerie", "Galerie", "/pages/gestion/galerie.html", []),
+  new Route(
+    "/galerie",
+    "Galerie",
+    "/pages/gestion/galerie.html",
+    [],
+    "/js/gestion/galerie.js",
+  ),
   new Route(
     "/signIn",
     "Connexion",
@@ -43,7 +49,13 @@ export const allRoutes = [
   new Route("/reserver", "Réserver", "/pages/reservations/reserver.html", [
     "client",
   ]),
-  new Route("/carte", "La carte", "/pages/gestion/carte.html", []),
+  new Route(
+    "/carte",
+    "La carte",
+    "/pages/gestion/carte.html",
+    [],
+    "/js/gestion/carte.js",
+  ),
 ];
 
 //Le titre s'affiche comme ceci : Route.titre - websitename

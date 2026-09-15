@@ -2,6 +2,7 @@ const tokenCookieName = "authToken";
 const roleCookieName = "role";
 const signOutBtn = document.getElementById("signOut-btn");
 signOutBtn.addEventListener("click", signOut);
+const apiUrl = "http://127.0.0.1:8000/api/";
 
 function getRole() {
   return getCookie(roleCookieName);
@@ -22,9 +23,9 @@ function getToken() {
 }
 
 function setCookie(name, value, days) {
-  var expires = "";
+  let expires = "";
   if (days) {
-    var date = new Date();
+    let date = new Date();
     date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
     expires = "; expires=" + date.toUTCString();
   }
@@ -32,12 +33,12 @@ function setCookie(name, value, days) {
 }
 
 function getCookie(name) {
-  var nameEQ = name + "=";
-  var ca = document.cookie.split(";");
-  for (var i = 0; i < ca.length; i++) {
-    var c = ca[i];
-    while (c.charAt(0) == " ") c = c.substring(1, c.length);
-    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+  const nameEQ = name + "=";
+  const ca = document.cookie.split(";");
+  for (const element of ca) {
+    let c = element;
+    while (c.startsWith(" ")) c = c.substring(1, c.length);
+    if (c.startsWith(nameEQ)) return c.substring(nameEQ.length, c.length);
   }
   return null;
 }
@@ -47,11 +48,7 @@ function eraseCookie(name) {
 }
 
 function isConnected() {
-  if (getToken() == null || getToken() == undefined) {
-    return false;
-  } else {
-    return true;
-  }
+  return getToken() != null && getToken() != undefined;
 }
 
 function showAndHideElementsForRoles() {
@@ -84,4 +81,35 @@ function showAndHideElementsForRoles() {
         break;
     }
   });
+}
+
+function sanitizeHtml(text) {
+  const temp = document.createElement("div");
+  temp.textContent = text;
+  return temp.innerHTML;
+}
+
+function getInfoUser() {
+  let myHeaders = new Headers();
+  myHeaders.append("X-AUTH-TOKEN", getToken());
+  const requestOptions = {
+    method: "GET",
+    headers: myHeaders,
+    redirect: "follow",
+  };
+
+  fetch(apiUrl + "account/me", requestOptions)
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        console.log(
+          "Impossible de recuperer les informations de l'utilisateur",
+        );
+      }
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch(() => console.error("Erreur lors de la recuperation"));
 }

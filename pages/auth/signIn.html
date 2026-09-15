@@ -4,7 +4,7 @@
   </div>
 </div>
 <div class="container">
-  <form>
+  <form id="signInForm">
     <div class="mb-3">
       <label for="EmailInput" class="form-label">Email</label>
       <input
@@ -12,6 +12,7 @@
         class="form-control"
         id="EmailInput"
         placeholder="test@mail.com"
+        name="email"
       />
       <div class="invalid-feedback">
         Le mail et le mot de passe ne correspondent pas.
@@ -19,7 +20,12 @@
     </div>
     <div class="mb-3">
       <label for="PasswordInput" class="form-label">Mot de passe</label>
-      <input type="password" class="form-control" id="PasswordInput" />
+      <input
+        type="password"
+        class="form-control"
+        id="PasswordInput"
+        name="password"
+      />
     </div>
     <div class="text-center pt-3">
       <button type="button" class="btn btn-primary" id="btn-signIn">

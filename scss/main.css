@@ -12145,4 +12145,43 @@ p {
 
 .redirect-banner.hide {
   opacity: 0;
+}
+
+.menu-container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #fdfaf5;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.menu-category {
+  margin-bottom: 30px;
+}
+
+.menu-category h2, .menu-category .h2 {
+  margin-bottom: 10px;
+  border-bottom: 2px solid #d4c4a8;
+  padding-bottom: 5px;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px dashed #ccc;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-item-name {
+  font-weight: 600;
+}
+
+.menu-item-price {
+  font-weight: 600;
+  color: #8b5b3b;
 }/*# sourceMappingURL=main.css.map */
