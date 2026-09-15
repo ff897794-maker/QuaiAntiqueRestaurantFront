@@ -3,7 +3,7 @@ const roleCookieName = "role";
 const signOutBtn = document.getElementById("signOut-btn");
 signOutBtn.addEventListener("click", signOut);
 const apiUrl = "http://127.0.0.1:8000/api/";
-
+getInfosUser();
 function getRole() {
   return getCookie(roleCookieName);
 }
@@ -89,10 +89,11 @@ function sanitizeHtml(text) {
   return temp.innerHTML;
 }
 
-function getInfoUser() {
+function getInfosUser() {
   let myHeaders = new Headers();
   myHeaders.append("X-AUTH-TOKEN", getToken());
-  const requestOptions = {
+
+  let requestOptions = {
     method: "GET",
     headers: myHeaders,
     redirect: "follow",
@@ -101,15 +102,19 @@ function getInfoUser() {
   fetch(apiUrl + "account/me", requestOptions)
     .then((response) => {
       if (response.ok) {
+        console.log("Informations utilisateur récupérées avec succès");
         return response.json();
       } else {
-        console.log(
-          "Impossible de recuperer les informations de l'utilisateur",
-        );
+        console.log("Impossible de récupérer les informations utilisateur");
       }
     })
     .then((result) => {
       return result;
     })
-    .catch(() => console.error("Erreur lors de la recuperation"));
+    .catch((error) => {
+      console.error(
+        "erreur lors de la récupération des données utilisateur",
+        error,
+      );
+    });
 }
