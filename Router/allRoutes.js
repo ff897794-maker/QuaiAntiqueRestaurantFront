@@ -25,29 +25,29 @@ export const allRoutes = [
     "/js/auth/signUp.js",
   ),
   new Route("/account", "Mon compte", "/pages/auth/account.html", [
-    "client",
-    "admin",
+    "ROLE_USER",
+    "ROLE_ADMIN",
   ]),
   new Route(
     "/editPassword",
     "Modifier mot de passe",
     "/pages/auth/editPassword.html",
-    ["client", "admin"],
+    ["ROLE_USER", "ROLE_ADMIN"],
   ),
   new Route(
     "/adminResa",
     "Réservations",
     "/pages/reservations/adminResa.html",
-    ["admin"],
+    ["ROLE_ADMIN"],
   ),
   new Route(
     "/reservations",
     "Vos réservations",
     "/pages/reservations/allResa.html",
-    ["client", "admin"],
+    ["ROLE_USER", "ROLE_ADMIN"],
   ),
   new Route("/reserver", "Réserver", "/pages/reservations/reserver.html", [
-    "client",
+    "ROLE_USER",
   ]),
   new Route(
     "/carte",
