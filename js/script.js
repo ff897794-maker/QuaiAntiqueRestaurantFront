@@ -1,9 +1,11 @@
 const tokenCookieName = "authToken";
 const roleCookieName = "role";
 const signOutBtn = document.getElementById("signOut-btn");
-signOutBtn.addEventListener("click", signOut);
 const apiUrl = "http://127.0.0.1:8000/api/";
+const adminLastName = document.getElementById("admin-last-name");
+const userLastName = document.getElementById("user-last-name");
 getInfosUser();
+
 function getRole() {
   return getCookie(roleCookieName);
 }
@@ -109,6 +111,13 @@ function getInfosUser() {
       }
     })
     .then((result) => {
+      console.log("Données utilisateur:", result);
+      if (userLastName) {
+        userLastName.textContent = result.lastName;
+      }
+      if (adminLastName) {
+        adminLastName.textContent = result.lastName;
+      }
       return result;
     })
     .catch((error) => {
@@ -118,3 +127,7 @@ function getInfosUser() {
       );
     });
 }
+
+showAndHideElementsForRoles();
+
+signOutBtn.addEventListener("click", signOut);
