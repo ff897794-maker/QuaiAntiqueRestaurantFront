@@ -11,12 +11,12 @@ function checkCredentials() {
   let myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 
-  let checkedUserName = sanitizeHtml(dataForm.get("email"));
-  let checkedPassword = sanitizeHtml(dataForm.get("password"));
+  // let checkedUserName = sanitizeHtml(dataForm.get("email"));
+  // let checkedPassword = sanitizeHtml(dataForm.get("password"));
 
   let raw = JSON.stringify({
-    username: checkedUserName,
-    password: checkedPassword,
+    username: dataForm.get("email"),
+    password: dataForm.get("password"),
   });
 
   const requestOptions = {
@@ -31,6 +31,7 @@ function checkCredentials() {
       if (!response.ok) {
         mailInput.classList.add("is-invalid");
         passwordInput.classList.add("is-invalid");
+        throw new Error("Identifiants invalides");
       }
       return response.json();
     })

@@ -35,7 +35,6 @@ function loadMenu() {
     category.items.forEach((item) => {
       const itemDiv = document.createElement("div");
       itemDiv.classList.add("menu-item");
-
       itemDiv.innerHTML = `
         <span class="menu-item-name">${item.name}</span>
         <div class="action-image-buttons" data-show="admin">
@@ -99,3 +98,4 @@ if (savedMenu) {
   menuData = JSON.parse(savedMenu);
 }
 loadMenu();
+showAndHideElementsForRoles();

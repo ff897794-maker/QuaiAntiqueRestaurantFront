@@ -43,3 +43,4 @@ function getImage(titre, urlImage) {
         </div>
       </div>`;
 }
+showAndHideElementsForRoles();
