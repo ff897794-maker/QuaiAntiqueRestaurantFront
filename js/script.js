@@ -5,6 +5,16 @@ const apiUrl = "http://127.0.0.1:8000/api/";
 const adminLastName = document.getElementById("admin-last-name");
 const userLastName = document.getElementById("user-last-name");
 getInfosUser();
+function showLoader(text = "Chargement en cours...") {
+  const loader = document.getElementById("loader");
+  loader.textContent = text;
+  loader.classList.remove("hidden");
+}
+
+function hideLoader() {
+  const loader = document.getElementById("loader");
+  loader.classList.add("hidden");
+}
 
 function getRole() {
   return getCookie(roleCookieName);
@@ -100,7 +110,7 @@ function getInfosUser() {
     headers: myHeaders,
     redirect: "follow",
   };
-
+  showLoader("Chargement des informations...");
   fetch(apiUrl + "account/me", requestOptions)
     .then((response) => {
       if (response.ok) {
@@ -118,9 +128,12 @@ function getInfosUser() {
       if (adminLastName) {
         adminLastName.textContent = result.lastName;
       }
+      displayUserInfos(result);
+      hideLoader(); // <-- IMPORTANT: Hide the loader after data is fetched
       return result;
     })
     .catch((error) => {
+      hideLoader();
       console.error(
         "erreur lors de la récupération des données utilisateur",
         error,

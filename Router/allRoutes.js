@@ -24,10 +24,14 @@ export const allRoutes = [
     ["disconnected"],
     "/js/auth/signUp.js",
   ),
-  new Route("/account", "Mon compte", "/pages/auth/account.html", [
-    "ROLE_USER",
-    "ROLE_ADMIN",
-  ]),
+  new Route(
+    "/account",
+    "Mon compte",
+    "/pages/auth/account.html",
+    ["ROLE_USER", "ROLE_ADMIN"],
+    "/js/auth/account.js",
+  ),
+
   new Route(
     "/editPassword",
     "Modifier mot de passe",
