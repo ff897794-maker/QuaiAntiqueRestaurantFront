@@ -21,7 +21,9 @@ function ValidateForm() {
 }
 
 function validateRequired(input) {
-  if (input.value.trim() === "") {
+  let checkedValue = sanitizeHtml(input.value.trim());
+
+  if (checkedValue === "") {
     input.classList.add("is-invalid");
     input.classList.remove("is-valid");
     return false;
@@ -33,7 +35,7 @@ function validateRequired(input) {
 }
 
 function validateEmail(input) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
   if (emailRegex.test(input.value)) {
     input.classList.remove("is-invalid");
     input.classList.add("is-valid");
@@ -94,7 +96,7 @@ function UserSignUp() {
   fetch(apiUrl + "registration", requestOptions)
     .then((response) => {
       if (!response.ok) {
-        throw new Error();
+        throw new Error("Erreur lors de l'inscription: " + response.statusText);
       }
       return response.json();
     })

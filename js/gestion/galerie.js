@@ -6,12 +6,14 @@ let monImage2 = getImage("Burger", "../assets/burger.jpg");
 let monImage3 = getImage("Drink", "../assets/drink.jpg");
 let monImage4 = getImage("Lunch", "../assets/lunch.jpg");
 let monImage5 = getImage("Terrasse", "../assets/terrasse.jpg");
-let monImage6 = getImage("Tiramisu", "../assets/tiramisu.jpg");
+let monImage6 = getImage("Plat", "../assets/plats.jpg");
 
 galerieContainer.innerHTML += monImage;
 galerieContainer.innerHTML += monImage2;
 galerieContainer.innerHTML += monImage3;
 galerieContainer.innerHTML += monImage4;
+galerieContainer.innerHTML += monImage5;
+galerieContainer.innerHTML += monImage6;
 
 function getImage(titre, urlImage) {
   titre = sanitizeHtml(titre);
