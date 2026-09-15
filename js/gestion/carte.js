@@ -38,6 +38,24 @@ function loadMenu() {
 
       itemDiv.innerHTML = `
         <span class="menu-item-name">${item.name}</span>
+        <div class="action-image-buttons" data-show="admin">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-toggle="modal"
+            data-bs-target="#EditDishModal"
+          >
+          <i class="bi bi-pencil-square"></i>
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-toggle="modal"
+            data-bs-target="#DeleteDishModal"
+          >
+          <i class="bi bi-trash"></i>
+          </button>
+        </div>
         <span class="menu-item-price">${item.price}</span>
       `;
 
@@ -47,6 +65,34 @@ function loadMenu() {
     container.appendChild(categoryDiv);
   });
 }
+
+function addDish(category, name, price) {
+  const categoryIndex = menuData.findIndex((cat) => cat.category === category);
+  if (categoryIndex !== -1) {
+    menuData[categoryIndex].items.push({ name, price });
+  } else {
+    menuData.push({
+      category,
+      items: [{ name, price }],
+    });
+  }
+  localStorage.setItem("menuData", JSON.stringify(menuData));
+}
+
+document
+  .getElementById("form-add-dish")
+  .addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById("NameInput").value;
+    const category = document.getElementById("categorieInput").value;
+    const price = document.getElementById("PriceInput").value;
+
+    addDish(category, name, price);
+
+    // Reset the form
+    document.getElementById("form-add-dish").reset();
+  });
 
 const savedMenu = localStorage.getItem("menuData");
 if (savedMenu) {

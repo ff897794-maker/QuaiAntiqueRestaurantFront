@@ -3,4 +3,178 @@
     <h1>La carte</h1>
   </div>
 </div>
-<div id="menuContainer" class="menu-container"></div>
+<div class="container text-center p-4">
+  <div class="row">
+    <div class="col-12"></div>
+    <div id="menuContainer" class="menu-container"></div>
+  </div>
+  <button
+    type="button"
+    class="btn btn-primary text-center mb-4"
+    data-bs-toggle="modal"
+    data-bs-target="#EditionMenuModal"
+    data-show="admin"
+  >
+    Ajouter un plat
+  </button>
+</div>
+
+<!-- MODAL D'AJOUT DE PLAT -->
+<div
+  class="modal fade"
+  id="EditionMenuModal"
+  tabindex="-1"
+  aria-labelledby="EditionMenuModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="EditionMenuModalLabel">Ajouter un plat</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form id="form-add-dish">
+          <div class="mb-3">
+            <label for="NameInput" class="form-label">Titre</label>
+            <input
+              type="text"
+              class="form-control"
+              id="NameInput"
+              placeholder="Titre du plat"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="categorieInput" class="form-label">Catégorie</label></br>
+            <select
+              class="btn btn-primary"
+              name="categorie"
+              id="categorieInput"
+            >
+              <option value="Entrées">Entrée</option>
+              <option value="Plats">Plat</option>
+              <option value="Desserts">Dessert</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="PriceInput" class="form-label">Prix</label>
+            <input
+              type="number"
+              class="form-control"
+              id="PriceInput"
+              placeholder="Prix du plat"
+            />
+          </div>
+
+          <div class="text-center pt-3">
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- MODAL D'ÉDITION DE PLAT -->
+<div
+  class="modal fade"
+  id="EditDishModal"
+  tabindex="-1"
+  aria-labelledby="EditDishModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="EditDishModalLabel">Modifier un plat</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form id="form-edit-dish">
+          <div class="mb-3">
+            <label for="editNameInput" class="form-label">Titre</label>
+            <input
+              type="text"
+              class="form-control"
+              id="editNameInput"
+              placeholder="Titre du plat"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="editCategorieInput" class="form-label">Catégorie</label></br>
+            <select
+              class="btn btn-primary"
+              name="categorie"
+              id="editCategorieInput"
+            >
+              <option value="Entrées">Entrée</option>
+              <option value="Plats">Plat</option>
+              <option value="Desserts">Dessert</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="editPriceInput" class="form-label">Prix</label>
+            <input
+              type="number"
+              class="form-control"
+              id="editPriceInput"
+              placeholder="Prix du plat"
+            />
+          </div>
+
+          <div class="text-center pt-3">
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- MODAL DE SUPPRESSION DE PLAT -->
+<div
+  class="modal fade"
+  id="DeleteDishModal"
+  tabindex="-1"
+  aria-labelledby="DeleteDishModal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="DeleteDishModalLabel">Supprimer un plat</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>Êtes-vous sûr de vouloir supprimer ce plat ?</p>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >
+          Annuler
+        </button>
+        <button type="button" class="btn btn-danger" id="confirmDeleteDish">
+          Supprimer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

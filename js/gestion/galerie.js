@@ -2,8 +2,16 @@ const galerieContainer = document.getElementById("allImages");
 
 //Récuperer les images de la base de données et les afficher dans la galerie
 let monImage = getImage("Barista", "../assets/barista.jpg");
+let monImage2 = getImage("Burger", "../assets/burger.jpg");
+let monImage3 = getImage("Drink", "../assets/drink.jpg");
+let monImage4 = getImage("Lunch", "../assets/lunch.jpg");
+let monImage5 = getImage("Terrasse", "../assets/terrasse.jpg");
+let monImage6 = getImage("Tiramisu", "../assets/tiramisu.jpg");
 
 galerieContainer.innerHTML += monImage;
+galerieContainer.innerHTML += monImage2;
+galerieContainer.innerHTML += monImage3;
+galerieContainer.innerHTML += monImage4;
 
 function getImage(titre, urlImage) {
   titre = sanitizeHtml(titre);
