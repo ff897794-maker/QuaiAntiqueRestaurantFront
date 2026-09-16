@@ -1,24 +1,28 @@
 on: push
 name: 🚀 Deploy website on push
+
 jobs:
   web-deploy:
-    name: 🎉 Deploy
+    name: 🎉 Deploy (Static Website)
     runs-on: ubuntu-latest
+
     steps:
     - name: 🚚 Get latest code
-      uses: actions/checkout@v6
-    
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+      uses: actions/checkout@v4
+
+    - name: 📂 Upload via SFTP
+      uses: appleboy/scp-action@v0.1.7
       with:
-        server: ftp-quaiantiquerestaurantfg.alwaysdata.net
+        host: ftp-quaiantiquerestaurantfg.alwaysdata.net
         username: quaiantiquerestaurantfg
-        password: ${{ secrets.ftp_password }}
-        protocole: sftp
+        key: ${{ secrets.ssh_key }}
+        port: 22
+
+        source: "./"
+        target: "/home/quaiantiquerestaurantfg/www"
+
         exclude: |
           **/.git*
-          **/.git*/**
-          **/node_modules/bootstrap/scss/**
-          **/node_modules/bootstrap/js/**
-          **/node_modules/bootstrap-icons/icons/**  
-        server-dir: /www/
+          **/node_modules/**
+          **/.DS_Store
+
