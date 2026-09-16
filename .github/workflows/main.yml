@@ -3,26 +3,29 @@ name: 🚀 Deploy website on push
 
 jobs:
   web-deploy:
-    name: 🎉 Deploy (Static Website)
+    name: 🎉 Deploy
     runs-on: ubuntu-latest
 
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
 
-    - name: 📂 Upload via SFTP
+    - name: 🔧 Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22.22.3'
+
+    - name: 📦 Install dependencies
+      run: npm install
+
+    - name: 📂 Upload files via SFTP
       uses: appleboy/scp-action@v0.1.7
       with:
-        host: ftp-quaiantiquerestaurantfg.alwaysdata.net
+        host: ssh-quaiantiquerestaurantfg.alwaysdata.net
         username: quaiantiquerestaurantfg
-        key: ${{ secrets.ssh_key }}
+        password: ${{ secrets.ftp_password }}
         port: 22
-
-        source: "./"
+        source: "./*"
         target: "/home/quaiantiquerestaurantfg/www"
-
-        exclude: |
-          **/.git*
-          **/node_modules/**
-          **/.DS_Store
+        overwrite: true
 
