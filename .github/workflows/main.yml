@@ -17,20 +17,18 @@ jobs:
 
     - name: 📦 Install dependencies
       run: npm install
-      
-    - name: 🧹 Préparer les fichiers (sans .git)
-      run: |
-        mkdir deploy
-        rsync -av --exclude='.git' --exclude='.github' ./ deploy/
-        
-    - name: 📂 Upload files via SFTP
-      uses: appleboy/scp-action@v0.1.7
+
+    - name: 📂 Upload files via SFTP (avec exclusions)
+      uses: appleboy/sftp-action@v0.1.7
       with:
         host: ssh-quaiantiquerestaurantfg.alwaysdata.net
         username: quaiantiquerestaurantfg
         password: ${{ secrets.ftp_password }}
         port: 22
-        source: "./*"
+        source: "./"
         target: "/home/quaiantiquerestaurantfg/www"
         overwrite: true
-
+        exclude: |
+          .git*
+          .github*
+          node_modules
