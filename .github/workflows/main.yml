@@ -9,6 +9,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Remove .git folder before deploy
+        run: rm -rf .git
+
       - name: 📂 Deploy via SFTP (mot de passe)
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
@@ -18,8 +21,8 @@ jobs:
           password: ${{ secrets.ftp_password }}
           local_path: "./"
           remote_path: "/home/quaiantiquerestaurantfg/www"
-          delete_remote_files: false
+          delete_remote_files: true
           exclude: |
-            .git/
-            .github/
             node_modules/
+            .github/
+            README.md
