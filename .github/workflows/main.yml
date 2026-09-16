@@ -3,25 +3,29 @@ name: 🚀 Deploy website on push
 
 jobs:
   web-deploy:
-    name: 🎉 Deploy
+    name: 🎉 Deploy (Static Website)
     runs-on: ubuntu-latest
 
     steps:
     - name: 🚚 Get latest code
-      uses: actions/checkout@v6
+      uses: actions/checkout@v4
 
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+    - name: 📂 Upload via SFTP
+      uses: appleboy/scp-action@v0.1.7
       with:
-        server: ftp-quaiantiquerestaurantfg.alwaysdata.net
-        protocol: ftps-legacy
-        port: 21
+        host: ftp-quaiantiquerestaurantfg.alwaysdata.net
         username: quaiantiquerestaurantfg
-        password: ${{ secrets.ftp_password }}
+        key: ${{ secrets.ssh_key }}
+        port: 22
+
+        # Tout le site statique
+        source: "./"
+
+        # Dossier AlwaysData
+        target: "/home/quaiantiquerestaurantfg/www"
+
+        # Exclusions simples
         exclude: |
           **/.git*
-          **/.git*/**
-          **/node_modules/bootstrap/scss/**
-          **/node_modules/bootstrap/js/**
-          **/node_modules/bootstrap-icons/icons/**
-        server-dir: /www/
+          **/node_modules/**
+          **/.DS_Store
