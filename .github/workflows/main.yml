@@ -1,0 +1,21 @@
+on: push
+name: 🚀 Deploy website on push
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: 📂 Deploy via SFTP (mot de passe)
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        with:
+          server: ssh-quaiantiquerestaurantfg.alwaysdata.net
+          port: 22
+          username: quaiantiquerestaurantfg
+          password: ${{ secrets.ftp_password }}
+          local_path: "./"
+          remote_path: "/home/quaiantiquerestaurantfg/www"
+          delete_remote_files: false
