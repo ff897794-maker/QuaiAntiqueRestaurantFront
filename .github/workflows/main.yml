@@ -25,6 +25,12 @@ jobs:
         username: quaiantiquerestaurantfg
         password: ${{ secrets.ftp_password }}
         port: 22
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/bootstrap/scss/**
+          **/node_modules/bootstrap/js/**
+          **/node_modules/bootstrap-icons/icons/**  
         source: "./"
         target: "/home/quaiantiquerestaurantfg/www"
         overwrite: true
