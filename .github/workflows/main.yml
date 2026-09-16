@@ -18,18 +18,13 @@ jobs:
     - name: 📦 Install dependencies
       run: npm install
 
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+    - name: 📂 Upload files via SFTP
+      uses: appleboy/scp-action@v0.1.7
       with:
-        server: ftp-quaiantiquerestaurantfg.alwaysdata.net
-        protocol: ftps-legacy
-        port: 22
+        host: ssh-quaiantiquerestaurantfg.alwaysdata.net
         username: quaiantiquerestaurantfg
         password: ${{ secrets.ftp_password }}
-        exclude: |
-          **/.git*
-          **/.git*/**
-          **/node_modules/bootstrap/scss/**
-          **/node_modules/bootstrap/js/**
-          **/node_modules/bootstrap-icons/icons/**
-        server-dir: /www/
+        port: 22
+        source: "./"
+        target: "/home/quaiantiquerestaurantfg/www"
+        overwrite: true
