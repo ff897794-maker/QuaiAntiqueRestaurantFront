@@ -19,3 +19,7 @@ jobs:
           local_path: "./"
           remote_path: "/home/quaiantiquerestaurantfg/www"
           delete_remote_files: false
+          exclude: |
+            .git/
+            .github/
+            node_modules/
