@@ -1,13 +1,26 @@
 on: push
 name: 🚀 Deploy website on push
+
 jobs:
   web-deploy:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
+
     steps:
     - name: 🚚 Get latest code
-      uses: actions/checkout@v6
-    
+      uses: actions/checkout@v4
+
+    - name: 🔧 Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22.22.3'
+
+    - name: 📦 Install dependencies
+      run: npm install
+
+    - name: 🏗 Build project
+      run: npm run build
+
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.4.0
       with:
@@ -20,5 +33,5 @@ jobs:
           **/.git*/**
           **/node_modules/bootstrap/scss/**
           **/node_modules/bootstrap/js/**
-          **/node_modules/bootstrap-icons/icons/**  
+          **/node_modules/bootstrap-icons/icons/**
         server-dir: /www/
