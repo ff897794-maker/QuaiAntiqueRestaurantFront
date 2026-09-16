@@ -22,7 +22,7 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@v4.4.0
       with:
         server: ftp-quaiantiquerestaurantfg.alwaysdata.net
-        protocol: sftp
+        protocol: ftps-legacy
         port: 22
         username: quaiantiquerestaurantfg
         password: ${{ secrets.ftp_password }}
