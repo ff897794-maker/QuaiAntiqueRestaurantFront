@@ -10,15 +10,7 @@ jobs:
     - name: 🚚 Get latest code
       uses: actions/checkout@v4
 
-    - name: 🔧 Setup Node
-      uses: actions/setup-node@v4
-      with:
-        node-version: '22.22.3'
-
-    - name: 📦 Install dependencies
-      run: npm install
-
-    - name: 📂 Upload via SFTP (version simple)
+    - name: 📂 Upload via SFTP (ultra simple)
       uses: appleboy/ssh-action@v1.0.0
       with:
         host: ssh-quaiantiquerestaurantfg.alwaysdata.net
