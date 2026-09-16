@@ -21,8 +21,7 @@ jobs:
           password: ${{ secrets.ftp_password }}
           local_path: "./"
           remote_path: "/home/quaiantiquerestaurantfg/www"
-          delete_remote_files: true
+          delete_remote_files: false
           exclude: |
-            node_modules/
             .github/
             README.md
